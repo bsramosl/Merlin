@@ -66,6 +66,29 @@ class RegistroUsuario(CreateView):
         return response
 
 
-class ListProfesor(ListView):
+class CreatePorfesor(LoginRequiredMixin,CreateView):
+    model = Profesor
+    form_class = ProfesorForm
+    template_name = 'admin/RegistrarProfesor.html'
+    success_url = reverse_lazy('Merlin:ListarProfesor')
+
+class ListProfesor(LoginRequiredMixin,ListView):
     model = Profesor
     template_name = 'admin/ListarProfesor.html'
+
+
+class CreateMateria(LoginRequiredMixin,CreateView):
+    model = Materia
+    form_class = MateriaForm
+    template_name = 'admin/RegistrarMateria.html'
+    success_url = reverse_lazy('Merlin:ListarMateria')
+
+class ListMateria(LoginRequiredMixin,ListView):
+    model = Materia
+    template_name = 'admin/ListarMateria.html'
+
+class UpdateMateria(UpdateView):
+    model = Materia
+    form_class = MateriaForm
+    template_name = 'admin/ActualizarMateria.html'
+    success_url = reverse_lazy('Merlin:ListarMateria')

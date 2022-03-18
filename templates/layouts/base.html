@@ -32,6 +32,7 @@
 	<link href="{% static 'css/responsive.css'%}" rel="stylesheet" type="text/css" />
 	<link href="{% static 'css/theme/light/theme-color.css'%}" rel="stylesheet" type="text/css" />
 	<!-- favicon -->
+	{% block css %}{% endblock %}
 	<link rel="shortcut icon" href="https://www.einfosoft.com/templates/admin/smart/source/assets/img/favicon.ico" />
 </head>
 <!-- END HEAD -->
@@ -366,29 +367,21 @@
 									<li class="nav-item">
 										<a href="{% url 'Merlin:ListarProfesor' %}" class="nav-link "> <span class="title">Todos los Profesores</span>
 										</a>
-									</li>
-									<li class="nav-item">
-										<a href="add_professor.html" class="nav-link "> <span class="title">Add
-												Professor</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="add_professor_bootstrap.html" class="nav-link "> <span
-												class="title">Add Professor Bootstrap</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="edit_professor.html" class="nav-link "> <span class="title">Edit
-												Professor</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="professor_profile.html" class="nav-link "> <span class="title">About
-												Professor</span>
-										</a>
-									</li>
+									</li> 
 								</ul>
 							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link nav-toggle"> <i data-feather="user"></i>
+									<span class="title">Materias</span> <span class="arrow"></span>
+								</a>
+								<ul class="sub-menu">
+									<li class="nav-item">
+										<a href="{% url 'Merlin:ListarMateria' %}" class="nav-link "> <span class="title">Todos las Materias</span>
+										</a>
+									</li> 
+								</ul>
+							</li>
+						 
 							<li class="nav-item">
 								<a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
 									<span class="title">Students</span><span class="arrow"></span></a>

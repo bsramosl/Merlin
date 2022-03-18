@@ -33,3 +33,27 @@ class LoginForm(AuthenticationForm):
             'username', 
             'password'
         )
+  
+
+class ProfesorForm(forms.ModelForm):
+    usuario = forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.Select(attrs={'placeholder': 'Nombre','class': 'form-control input-height'}))
+    area = forms.ModelChoiceField(queryset=Area.objects.all(),widget=forms.Select(attrs={'placeholder': 'Area','class': 'form-control input-height'}))
+    materia = forms.ModelChoiceField(queryset=Materia.objects.all(),widget=forms.Select(attrs={'placeholder': 'Materia','class': 'form-control input-height'}))
+    movil =  forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'Numero de Movil','class': 'form-control input-height'}))
+    generos= [
+    ('M', 'Masculino'),
+    ('F', 'Femenino'), 
+    ] 
+    genero = forms.ChoiceField(choices=generos, required=True, label="Seleccione su género",widget=forms.Select(attrs={'placeholder': 'Materia','class': 'form-control input-height'}))
+
+    class Meta:
+        model = Profesor
+        fields = '__all__'
+
+
+class MateriaForm(forms.ModelForm):
+    nombre =  forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre','class': 'form-control input-height'}))
+    
+    class Meta:
+        model = Materia
+        fields = '__all__'

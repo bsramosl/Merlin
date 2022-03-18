@@ -56,14 +56,14 @@ Merlin
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th> Name </th>
-                                                        <th> Department </th>
-                                                        <th> Gender </th>
-                                                        <th> Degree </th>
-                                                        <th> Mobile </th>
+                                                        <th> Nombre </th>
+                                                        <th> Departamento </th>
+                                                        <th> Género </th>
+                                                        <th> Materia </th>
+                                                        <th> Móvil </th>
                                                         <th> Email </th>
-                                                        <th>Joining Date</th>
-                                                        <th> Action </th>
+                                                        <th>Ingreso</th>
+                                                        <th> Opciones </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -402,5 +402,13 @@ Merlin
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- data tables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js'%}"></script>
+<script src="{% static 'js/pages/table/table_data.js'%}"></script>
 
 {% endblock %}

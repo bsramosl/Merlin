@@ -51,9 +51,8 @@ Merlin
                                     <p><span><i class="ti-alarm-clock"></i> Duración: {{list.duracion}}</span></p>
                                     <p><span><i class="ti-user"></i> Profesor: {{list.profesor}}</span></p>
                                     <p><span><i class="fa fa-graduation-cap"></i> Estudiantes: {{list.maxestudiante}}</span></p>
-                                    <button type="button"
-                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
-                                        More</button>
+                                    <a  href="{% url 'Merlin:DetalleCurso' list.id %}"
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Detalle</a>
                                 </div>
                             </div>
                         </div> 

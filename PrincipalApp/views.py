@@ -1,5 +1,3 @@
-from pyexpat import model
-from re import template
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView, RedirectView,DetailView
@@ -129,3 +127,7 @@ class UpdateCurso(UpdateView):
 class ListCursos(ListView):
     model = Curso
     template_name = 'ListaCurso.html'
+
+class DetCurso(DetailView):
+    model = Curso
+    template_name = 'DetalleCurso.html'

@@ -24,6 +24,7 @@ urlpatterns = [
 
 
    path('ListCursos/',views.ListCursos.as_view(), name='ListCursos'),
+   path('DetalleCurso/<int:pk>/',views.DetCurso.as_view(), name='DetalleCurso'),
 
 ]
 

@@ -26,7 +26,7 @@ class Materia(models.Model):
     
 
 class Profesor(models.Model):
-    usuario = models.ForeignKey(User,on_delete=models.CASCADE,blank=False, null=False)
+    usuario = models.OneToOneField(User,on_delete=models.CASCADE,blank=False, null=False)
     area = models.ForeignKey(Area, on_delete=models.CASCADE,blank=False, null=False)
     materia = models.ForeignKey(Materia, on_delete=models.CASCADE,blank=False, null=False)
     movil = models.IntegerField(blank=False, null=False)

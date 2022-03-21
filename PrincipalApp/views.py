@@ -66,6 +66,7 @@ class RegistroUsuario(CreateView):
         return response
 
 
+
 class CreatePorfesor(LoginRequiredMixin,CreateView):
     model = Profesor
     form_class = ProfesorForm
@@ -75,6 +76,8 @@ class CreatePorfesor(LoginRequiredMixin,CreateView):
 class ListProfesor(LoginRequiredMixin,ListView):
     model = Profesor
     template_name = 'admin/ListarProfesor.html'
+
+
 
 
 class CreateMateria(LoginRequiredMixin,CreateView):
@@ -92,3 +95,37 @@ class UpdateMateria(UpdateView):
     form_class = MateriaForm
     template_name = 'admin/ActualizarMateria.html'
     success_url = reverse_lazy('Merlin:ListarMateria')
+
+
+class CreateCurso(CreateView):
+    model = Curso
+    form_class = CursoForm
+    template_name = 'admin/RegistrarCurso.html'
+    success_url = reverse_lazy('Merlin:ListarCurso')
+
+    def form_invalid(self, form):
+        messages.error(self.request, form.errors)
+        return self.render_to_response(
+            self.get_context_data(request=self.request, form=form))
+
+class ListCurso(ListView):
+    model = Curso
+    template_name ='admin/ListarCurso.html'
+
+
+class UpdateCurso(UpdateView):
+    model = Curso
+    form_class = CursoForm
+    template_name ='admin/ActualizarCurso.html'
+    success_url = reverse_lazy('Merlin:ListarCurso')
+
+
+
+
+
+
+
+
+class ListCursos(ListView):
+    model = Curso
+    template_name = 'ListaCurso.html'

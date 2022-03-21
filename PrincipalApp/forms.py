@@ -1,3 +1,4 @@
+from pyexpat import model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
@@ -56,4 +57,19 @@ class MateriaForm(forms.ModelForm):
     
     class Meta:
         model = Materia
+        fields = '__all__'
+
+class CursoForm(forms.ModelForm):
+    nombre = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre del Curso','class': 'form-control input-height'}))
+    detalle = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Detalle','class': 'form-control-textarea'}))
+    fechainicio = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Seleccione Fecha','class': 'formDatePicker form-control flatpickr-input active'}))
+    duracion = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Duracion del Curso','class': 'form-control input-height'}))
+    precio = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Precio del Curso','class': 'form-control input-height'}))
+    profesor = forms.ModelChoiceField(queryset=Profesor.objects.all(),widget=forms.Select(attrs={'placeholder': 'Profesor','class': 'form-control input-height'}))
+    maxestudiante = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'Estutiantes Maximo','class': 'form-control input-height'}))
+    contacto = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'Numero de Contacto','class': 'form-control input-height'}))
+    imagen = forms.FileField(widget=forms.FileInput(attrs={'placeholder': 'Imagen','class': 'default'}))
+
+    class Meta:
+        model = Curso
         fields = '__all__'

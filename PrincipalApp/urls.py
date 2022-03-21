@@ -12,10 +12,18 @@ urlpatterns = [
    path('ListarProfesor/',views.ListProfesor.as_view(), name='ListarProfesor'),
    path('RegistrarProfesor/',views.CreatePorfesor.as_view(), name='RegistrarProfesor'),
 
-
    path('ListarMateria/',views.ListMateria.as_view(), name='ListarMateria'),
    path('RegistrarMateria/',views.CreateMateria.as_view(), name='RegistrarMateria'),
    path('UpdateMateria/<int:pk>/',views.UpdateMateria.as_view(), name='UpdateMateria'),
+
+   path('RegistrarCurso/',views.CreateCurso.as_view(), name='RegistrarCurso'),
+   path('ListarCurso/',views.ListCurso.as_view(), name='ListarCurso'),
+   path('UpdateCurso/<int:pk>/',views.UpdateCurso.as_view(), name='UpdateCurso'),
+
+
+
+
+   path('ListCursos/',views.ListCursos.as_view(), name='ListCursos'),
 
 ]
 

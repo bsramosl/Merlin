@@ -45,4 +45,27 @@ class Profesor(models.Model):
         ordering =['usuario']
     
     def __str__(self):
-        return self.usuario.name
+        return self.usuario.first_name + ' ' + self.usuario.last_name
+
+    
+class Curso(models.Model):
+    nombre = models.CharField(max_length=30,blank=False, null=False)
+    detalle = models.CharField(max_length=30,blank=False, null=False)
+    fechainicio = models.DateField(blank=False, null=False)
+    duracion = models.IntegerField(blank=False, null=False)
+    precio = models.IntegerField(blank=False, null=False)
+    profesor = models.ForeignKey(Profesor,on_delete=models.CASCADE,blank=False, null=False)
+    maxestudiante = models.IntegerField(blank=False, null=False)
+    contacto = models.IntegerField(blank=False, null=False)
+    imagen = models.ImageField('Imagen',upload_to='img/',blank=True, null=True)
+    
+    class Meta:
+        verbose_name = 'Curso'
+        verbose_name_plural = 'Cursos'
+        ordering = ['nombre']
+
+    def __str__(self):
+        return self.nombre
+
+
+

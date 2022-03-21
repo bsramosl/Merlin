@@ -11,15 +11,15 @@ Merlin
         <div class="page-bar">
             <div class="page-title-breadcrumb">
                 <div class=" pull-left">
-                    <div class="page-title">Lista de Materias</div>
+                    <div class="page-title">Lista de Curso</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
                             href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a class="parent-item" href="{% url 'Merlin:ListarMateria' %}">Materias</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListarCurso' %}">Cursos</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li class="active">Lista de Materias</li>
+                    <li class="active">Lista de Cursos</li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@ Merlin
                                 <div class="col-md-12">
                                     <div class="card card-box">
                                         <div class="card-head">
-                                            <header>Todos las Materias</header>
+                                            <header>Todos los Cursos</header>
                                             <div class="tools">
                                                 <a class="fa fa-repeat btn-color box-refresh"
                                                     href="javascript:;"></a> 
@@ -42,7 +42,7 @@ Merlin
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6 col-6">
                                                     <div class="btn-group">
-                                                        <a href="{% url 'Merlin:RegistrarMateria' %}" id="addRow"
+                                                        <a href="{% url 'Merlin:RegistrarCurso' %}" id="addRow"
                                                             class="btn btn-primary">
                                                             Agregar Nuevo <i class="fa fa-plus"></i>
                                                         </a>
@@ -56,20 +56,33 @@ Merlin
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th> Nombre </th> 
+                                                        <th> Nombre </th>
+                                                        <th> Fecha </th>
+                                                        <th> Duracion </th>
+                                                        <th> Precio </th>
+                                                        <th> Profesor </th>
+                                                        <th> MaxEstudiante </th>
+                                                        <th> Contacto</th>
+                                                        <th> Imagen</th>
                                                         <th> Opciones </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {% for list in object_list %}
- 
                                                     <tr class="odd gradeX">
                                                         <td class="patient-img">
-                                                            {{list.id}}
+                                                           {{list.id}}
                                                         </td>
-                                                        <td>{{list.nombre}}</td> 
+                                                        <td>{{list.nombre}}</td>
+                                                        <td class="left">{{list.fechainicio}}</td>
+                                                        <td class="left">{{list.duracion}}</td>
+                                                        <td class="left">{{list.precio}}</td>
+                                                        <td>{{list.profesor}}</td>
+                                                        <td>{{list.maxestudiante}}</td>
+                                                        <td class="left">{{list.contacto}}</td>
+                                                        <td>{{list.imagen}}</td>
                                                         <td>
-                                                            <a href="{% url 'Merlin:UpdateMateria' list.id %}"
+                                                            <a href="{% url 'Merlin:UpdateCurso' list.id %}"
                                                                 class="tblEditBtn">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>
@@ -77,8 +90,8 @@ Merlin
                                                                 <i class="fa fa-trash-o"></i>
                                                             </a>
                                                         </td>
-                                                    </tr>  
-                                                    {% endfor %} 
+                                                    </tr> 
+                                                    {% endfor %}
                                                 </tbody>
                                             </table>
                                         </div>

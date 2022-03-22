@@ -29,7 +29,7 @@ class Curso(models.Model):
     fechainicio = models.DateField(blank=False, null=False)
     duracion = models.IntegerField(blank=False, null=False)
     precio = models.IntegerField(blank=False, null=False)
-    profesor = models.ForeignKey(Persona,on_delete=models.CASCADE,blank=False, null=False)
+    persona = models.ForeignKey(Persona,on_delete=models.CASCADE,blank=False, null=False)
     maxestudiante = models.IntegerField(blank=False, null=False)
     imagen = models.ImageField('Imagen',upload_to='img/',blank=True, null=True)
     

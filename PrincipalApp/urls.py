@@ -12,6 +12,8 @@ urlpatterns = [
 
    path('ListarUsuario/',views.ListUsuario.as_view(), name='ListarUsuario'),
     path('RegistrarUsuario/',views.CreateUsuario.as_view(), name='RegistrarUsuario'),
+     path('UpdateUsuario/<int:pk>/',views.UpdateUsuario.as_view(), name='UpdateUsuario'),
+
    
    path('ListarPersona/',views.ListPersona.as_view(), name='ListarPersona'),
    path('RegistrarPersona/',views.CreatePersona.as_view(), name='RegistrarPersona'),

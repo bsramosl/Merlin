@@ -77,7 +77,17 @@ class ListUsuario(ListView):
     model = User
     template_name = 'admin/ListarUsuario.html'
 
+class UpdateUsuario(UpdateView):
+    model = User
+    form_class = UsuForm
+    template_name = 'admin/ActualizarUsuario.html'
+    success_url = reverse_lazy('Merlin:ListarUsuario')
 
+    
+    def form_invalid(self, form):
+        messages.error(self.request, form.errors)
+        return self.render_to_response(
+            self.get_context_data(request=self.request, form=form))
 
 
 class CreatePersona(LoginRequiredMixin,CreateView):

@@ -5,14 +5,14 @@
 Merlin
 {% endblock %}
 
-
 {% block css %} 
- 
+
+<link href="{% static 'css/pages/formlayout.css'%}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
 
 
 <div class="page-content-wrapper">
@@ -20,16 +20,15 @@ Merlin
         <div class="page-bar">
             <div class="page-title-breadcrumb">
                 <div class=" pull-left">
-                    <div class="page-title">Agregar curso
-                    </div>
+                    <div class="page-title">Agregar Usuario</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
                             href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a class="parent-item" href="{% url 'Merlin:ListarCurso'%}">Cursos</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListarUsuario' %}">Pesona</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li class="active">Agregar Curso</li>
+                    <li class="active">Agregar Pesona</li>
                 </ol>
             </div>
         </div>
@@ -37,74 +36,62 @@ Merlin
             <div class="col-md-12 col-sm-12">
                 <div class="card card-box">
                     <div class="card-head">
-                        <header>Detalles del Curso</header> 
+                        <header>Detalles de Usuario</header> 
                     </div>
-                    <div class="card-body" >
-                        <form method="post" class="form-horizontal"  enctype="multipart/form-data">
-                          {% csrf_token %}
+                    <div class="card-body" id="bar-parent">
+                        <form   method="post" class="form-horizontal"  enctype="multipart/form-data">
+                            {% csrf_token %}  
                             <div class="form-body">
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Nombre del curso
+                                    <label class="control-label col-md-3">Nombre Usuario
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                       {{form.nombre}}
+                                        {{form.username}}
+                                        
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Detalles del curso
+                                    <label class="control-label col-md-3">Nombre 
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        {{form.detalle}}
+                                        {{form.first_name}}                                        
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Fecha de inicio
+                                    <label class="control-label col-md-3">Apellido
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        {{form.fechainicio}}
+                                        {{form.last_name}}                                        
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Duración del curso
+                                    <label class="control-label col-md-3">Email
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        {{form.duracion}}
+                                        {{form.email}}                                        
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Precio del curso
+                                    <label class="control-label col-md-3">Contraseña
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        {{form.precio}}</div>
-                                </div>
+                                        {{form.password1}}                                        
+                                    </div>
+                                </div> 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3">Nombre del profesor
+                                    <label class="control-label col-md-3">Confirmar Contraseña
                                         <span class="required"> * </span>
                                     </label>
                                     <div class="col-md-5">
-                                        {{form.profesor}}</div>
+                                        {{form.password2}}                                        
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="control-label col-md-3">Estudiantes Máximo
-                                        <span class="required"> * </span>
-                                    </label>
-                                    <div class="col-md-5">
-                                        {{form.maxestudiante}}
-                                    </div>
-                                </div>                              
-                                <div class="form-group row">
-                                    <label class="control-label col-md-3">Foto de perfil
-                                    </label>
-                                    <div class="col-md-5">
-                                       {{form.imagen}}
-                                    </div>
-                                </div>
+                                </div> 
+                                
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="offset-md-3 col-md-9">
@@ -140,7 +127,13 @@ Merlin
 
 {% endblock %}
 
-
 {% block script %}
 
+ 
+<!-- start js include path -->
+   
+<script src="{% static 'plugins/jquery-validation/js/jquery.validate.min.js'%}"></script>
+<script src="{% static 'plugins/jquery-validation/js/additional-methods.min.js'%}"></script>  
+<script src="{% static 'js/pages/validation/form-validation.js'%}"></script> 
+  
 {% endblock %}

@@ -330,14 +330,18 @@
 							</li>  
 							<li class="nav-item">
 								<a href="#" class="nav-link nav-toggle"> <i data-feather="user"></i>
-									<span class="title">Profesor</span> <span class="arrow"></span>
+									<span class="title">Usuario</span> <span class="arrow"></span>
 								</a>
 								<ul class="sub-menu">
 									<li class="nav-item">
-										<a href="{% url 'Merlin:ListarProfesor' %}" class="nav-link "> <span class="title">Todos los Profesores</span>
+										<a href="{% url 'Merlin:ListarUsuario' %}" class="nav-link "> <span class="title">Todos los Usuarios</span>
 										</a>
 									</li> 
-								</ul>
+									<li class="nav-item">
+										<a href="{% url 'Merlin:ListarPersona' %}" class="nav-link "> <span class="title">Todos las Personas</span>
+										</a>
+									</li> 
+								</ul> 
 							</li>
 							<li class="nav-item">
 								<a href="#" class="nav-link nav-toggle"> <i data-feather="book-open"></i>
@@ -345,7 +349,7 @@
 								</a>
 								<ul class="sub-menu">
 									<li class="nav-item">
-										<a href="{% url 'Merlin:ListarMateria' %}" class="nav-link "> <span class="title">Todos las Materias</span>
+										<a href=" " class="nav-link "> <span class="title">Todos las Materias</span>
 										</a>
 									</li> 
 								</ul>

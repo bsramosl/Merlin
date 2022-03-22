@@ -1,3 +1,4 @@
+from re import template
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView, RedirectView,DetailView
@@ -65,35 +66,42 @@ class RegistroUsuario(CreateView):
 
 
 
-class CreatePorfesor(LoginRequiredMixin,CreateView):
-    model = Profesor
-    form_class = ProfesorForm
-    template_name = 'admin/RegistrarProfesor.html'
-    success_url = reverse_lazy('Merlin:ListarProfesor')
-
-class ListProfesor(LoginRequiredMixin,ListView):
-    model = Profesor
-    template_name = 'admin/ListarProfesor.html'
+class CreateUsuario(CreateView):
+    model = User
+    form_class = UsuarioForm
+    template_name = 'admin/RegistrarUsuario.html'
+    success_url = reverse_lazy('Merlin:ListarUsuario')
 
 
+class ListUsuario(ListView):
+    model = User
+    template_name = 'admin/ListarUsuario.html'
 
 
-class CreateMateria(LoginRequiredMixin,CreateView):
-    model = Materia
-    form_class = MateriaForm
-    template_name = 'admin/RegistrarMateria.html'
-    success_url = reverse_lazy('Merlin:ListarMateria')
 
-class ListMateria(LoginRequiredMixin,ListView):
-    model = Materia
-    template_name = 'admin/ListarMateria.html'
 
-class UpdateMateria(UpdateView):
-    model = Materia
-    form_class = MateriaForm
-    template_name = 'admin/ActualizarMateria.html'
-    success_url = reverse_lazy('Merlin:ListarMateria')
+class CreatePersona(LoginRequiredMixin,CreateView):
+    model = Persona
+    form_class = PersonaForm
+    template_name = 'admin/RegistrarPersona.html'
+    success_url = reverse_lazy('Merlin:ListarPersona')
 
+    def form_invalid(self, form):
+        messages.error(self.request, form.errors)
+        return self.render_to_response(
+            self.get_context_data(request=self.request, form=form))
+
+class ListPersona(LoginRequiredMixin,ListView):
+    model = Persona
+    template_name = 'admin/ListarPersona.html'
+
+class UpdatePersona(UpdateView):
+    model = Persona
+    form_class = PersonaForm
+    template_name = 'admin/ActualizarPersonas.html'
+    success_url = reverse_lazy('Merlin:ListarPersona')
+
+  
 
 class CreateCurso(CreateView):
     model = Curso
@@ -117,11 +125,7 @@ class UpdateCurso(UpdateView):
     template_name ='admin/ActualizarCurso.html'
     success_url = reverse_lazy('Merlin:ListarCurso')
 
-
-
-
-
-
+ 
 
 
 class ListCursos(ListView):

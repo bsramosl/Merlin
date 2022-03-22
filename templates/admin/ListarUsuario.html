@@ -11,15 +11,15 @@ Merlin
         <div class="page-bar">
             <div class="page-title-breadcrumb">
                 <div class=" pull-left">
-                    <div class="page-title">Lista de profesores</div>
+                    <div class="page-title">Lista de Usuarios</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
                             href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a class="parent-item" href="{% url 'Merlin:ListarProfesor' %}">Profesores</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListarUsuario' %}">Usuario</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li class="active">Lista de profesores</li>
+                    <li class="active">Lista de Usuarios</li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@ Merlin
                                 <div class="col-md-12">
                                     <div class="card card-box">
                                         <div class="card-head">
-                                            <header>Todos los profesores</header>
+                                            <header>Todos los Usuarios</header>
                                             <div class="tools">
                                                 <a class="fa fa-repeat btn-color box-refresh"
                                                     href="javascript:;"></a> 
@@ -42,7 +42,7 @@ Merlin
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6 col-6">
                                                     <div class="btn-group">
-                                                        <a href="{% url 'Merlin:RegistrarProfesor' %}" id="addRow"
+                                                        <a href="{% url 'Merlin:RegistrarUsuario' %}" id="addRow"
                                                             class="btn btn-primary">
                                                             Agregar Nuevo <i class="fa fa-plus"></i>
                                                         </a>
@@ -56,13 +56,12 @@ Merlin
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th> Nombre </th>
-                                                        <th> Departamento </th>
-                                                        <th> Género </th>
-                                                        <th> Materia </th>
-                                                        <th> Móvil </th>
+                                                        <th> Nombre </th>                                                       
+                                                        <th> Usuario </th>                                                     
+                                                        <th> Super Usuario </th>
                                                         <th> Email </th>
-                                                        <th>Ingreso</th>
+                                                        <th> Rol </th>
+                                                        <th>Ultima Secion</th>
                                                         <th> Opciones </th>
                                                     </tr>
                                                 </thead>
@@ -71,19 +70,17 @@ Merlin
                                                     {% for list in object_list %}
                                                     <tr class="odd gradeX">
                                                         <td class="patient-img">
-                                                            <img src="../assets/img/user/user1.jpg" alt="">
+                                                            {{list.id}}
                                                         </td>
-                                                        <td>{{list.usuario.get_full_name}}</td>
-                                                        <td class="left">{{list.area}}</td>
-                                                        <td class="left">{{list.genero}}</td>
-                                                        <td class="left">{{list.materia}}</td>
-                                                        <td><a href="tel:{{list.movil}}">
-                                                                {{list.movil}} </a></td>
-                                                        <td><a href=" {{list.usuario.email}}">
-                                                                {{list.usuario.email}} </a></td>
-                                                        <td class="left">{{list.created_at}}</td>
+                                                        <td>{{list.get_full_name}}</td>                                                       
+                                                        <td class="left">{{list.username}}</td>                                                       
+                                                        <td>{{list.is_superuser}}</td>
+                                                        <td><a href=" {{list.email}}">
+                                                                {{list.email}} </a></td>
+                                                        <td class="left">{{list.rol}}</td>
+                                                        <td class="left">{{list.last_login}}</td>
                                                         <td>
-                                                            <a href="edit_professor.html"
+                                                            <a href=" "
                                                                 class="tblEditBtn">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>

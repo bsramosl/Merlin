@@ -1,0 +1,143 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}
+Merlin
+{% endblock %}
+
+{% block css %} 
+
+<link href="{% static 'css/pages/formlayout.css'%}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Agregar Pesona</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                            href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListarPersona' %}">Pesona</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Agregar Pesona</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Detalles de Persona</header> 
+                    </div>
+                    <div class="card-body" id="bar-parent">
+                        <form   method="post" class="form-horizontal"  enctype="multipart/form-data">
+                            {% csrf_token %} 
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Usuario
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        {{form.usuario}}
+                                        
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Fecha de ingreso 
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        {{form.fechaingreso}}
+                                        <div class="input-append date">
+                                            <div id="dateIcon" class="input-group datePicker">
+                                                <input class="formDatePicker form-control" type="text"
+                                                    placeholder="Select Date.." data-input>
+                                                <span class="dateBtn">
+                                                    <a class="input-button" title="toggle" data-toggle>
+                                                        <i class="icon-calendar"></i>
+                                                    </a>
+                                                    <a class="input-button" title="clear" data-clear>
+                                                        <i class="icon-close"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Gender
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        {{form.genero}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Movil.
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        {{form.movil}}
+                                    </div>
+                                </div>  
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Foto de Perfil
+                                    </label>
+                                    <div class="col-md-5">
+                                       {{form.imagen}}
+                                    </div>
+                                </div>  
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="offset-md-3 col-md-9">
+                                            <button type="submit"
+                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <link href="{% static 'sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'sweetalert2/sweetalert2.min.js' %}"></script>
+    <script type="text/javascript">  
+            Swal.fire({
+                icon: '{{ message.tags }}',
+                title: '{{ message.tags}}',
+                html: '{{ message }}',
+            });                         
+    </script> 
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
+
+{% block script %}
+
+ 
+<!-- start js include path -->
+   
+<script src="{% static 'plugins/jquery-validation/js/jquery.validate.min.js'%}"></script>
+<script src="{% static 'plugins/jquery-validation/js/additional-methods.min.js'%}"></script>  
+<script src="{% static 'js/pages/validation/form-validation.js'%}"></script> 
+  
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}
+Merlin
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Lista de Categorias</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                            href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListCategoria' %}">Categorais</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Lista de Categorias</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-line"> 
+                    <div class="tab-content">
+                        <div class="tab-pane active fontawesome-demo" >
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-box">
+                                        <div class="card-head">
+                                            <header>Todos las Categorias</header>
+                                            <div class="tools">
+                                                <a class="fa fa-repeat btn-color box-refresh"
+                                                    href="javascript:;"></a> 
+                                            </div>
+                                        </div>
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-6">
+                                                    <div class="btn-group">
+                                                        <a href="{% url 'Merlin:RegistrarCategoria' %}" id="addRow"
+                                                            class="btn btn-primary">
+                                                            Agregar Nuevo <i class="fa fa-plus"></i>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table
+                                                class="table table-striped table-bordered table-hover table-checkable order-column valign-middle"
+                                                id="example4">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th> Nombre </th> 
+                                                        <th> Opciones </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for list in object_list %}
+                                                    <tr class="odd gradeX">
+                                                        <td class="patient-img">
+                                                           {{list.id}}
+                                                        </td>
+                                                        <td>{{list.nombre}}</td> 
+                                                        <td>
+                                                            <a href="{% url 'Merlin:EditarCategoria' list.id %}"
+                                                                class="tblEditBtn">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </a>
+                                                            <a class="tblDelBtn">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr> 
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- data tables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js'%}"></script>
+<script src="{% static 'js/pages/table/table_data.js'%}"></script>
+
+{% endblock %}

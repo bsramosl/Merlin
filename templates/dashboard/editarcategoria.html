@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}
+Merlin
+{% endblock %}
+
+
+{% block css %} 
+ 
+ 
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Editar Categoria
+                    </div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                            href="{% url 'Merlin:Index' %}">Inicio</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li><a class="parent-item" href="{% url 'Merlin:ListCategoria'%}">Categorias</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Editar Categoria</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Detalles de Categoria</header> 
+                    </div>
+                    <div class="card-body" >
+                        <form method="post" class="form-horizontal"  enctype="multipart/form-data">
+                          {% csrf_token %}
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Nombre Categoria
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                       {{form.nombre}}
+                                    </div>
+                                </div> 
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="offset-md-3 col-md-9">
+                                            <button type="submit"
+                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <link href="{% static 'sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'sweetalert2/sweetalert2.min.js' %}"></script>
+    <script type="text/javascript">  
+            Swal.fire({
+                icon: '{{ message.tags }}',
+                title: '{{ message.tags}}',
+                html: '{{ message }}',
+            });                         
+    </script> 
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}
